@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    用語編集(更新)画面
+{% endblock %}
+
+{% block content %}
+    {% from "form_macro.html" import render_field %}
+    <form method="post" novalidate>
+        {{ form.csrf_token }}
+        {{ render_field(form.content) }}
+        {{ render_field(form.close_date) }}
+        {{ form.submit() }}
+    </form>
+{% endblock %}
+
+{% block script %}{% endblock %}

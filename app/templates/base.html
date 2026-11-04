@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon"
+              href="{{ url_for('static', filename='favicon.ico') }}"
+              type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap"
+              rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+        <title>
+            {% block title %}{% endblock %}
+        </title>
+    </head>
+    <body>
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+                <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+            <header>
+                {% block header %}
+                    <h1>{{ header_message }}</h1>
+                {% endblock %}
+            </header>
+            <hr/>
+            <main>
+                {% block content %}{% endblock %}
+            </main>
+            <hr/>
+            <footer>
+                {% block script %}
+                    <button type="button" id="scroll-top-button">↑</button>
+                {% endblock %}
+
+                {% block footer %}
+                    <div>
+                        <nav class="app-nav">
+                            <a href="{{ url_for('main.lists') }}" class="return-page button">戻る</a>
+                        </nav>
+                    </div>
+                {% endblock %}
+            </footer>
+        </div>
+    </body>
+</html>

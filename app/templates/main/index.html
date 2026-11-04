@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}トップページ画面{% endblock %}
+
+{% block header %}
+    {{ super() }}
+    <div>
+        <nav class="app-nav">
+            <ul>
+                <li>
+                    <a href="{{ url_for('auth.login') }}" class="auth button">ログイン</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('auth.register') }}" class="auth button">新規作成</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
+
+{% block script %}{% endblock %}
+
+{% block footer %}{% endblock %}

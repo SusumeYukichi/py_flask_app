@@ -1,0 +1,10 @@
+ネットワークを支える技術として、まず押さえたい用語は次のとおりです。
+基盤：IP（Internet Protocol）は端末をアドレスで識別してパケットを届ける仕組み、IPv4・IPv6はその代表的な方式です。
+通信制御：TCP（Transmission Control Protocol）は信頼性を重視した通信、UDP（User Datagram Protocol）は速度と軽量性を重視した通信です。
+設定：DNS（Domain Name System）はドメイン名をIPアドレスへ変換し、DHCP（Dynamic Host Configuration Protocol）は端末へIPアドレスなどを自動設定します。
+LAN：Ethernetは有線LANの代表規格、Wi-Fiは無線LAN、ARP（Address Resolution Protocol）はIPアドレスからMACアドレスを調べる仕組みです。
+中継：Routerは異なるネットワーク間を中継し、Switchは同一LAN内の端末間通信を中継します。Routingはパケットの経路を決定する技術です。
+変換：VLAN（Virtual LAN）は論理的にLANを分割し、NAT（Network Address Translation）はプライベートIPとグローバルIPなどを変換します。
+セキュリティ：Firewallは通信を許可・遮断し、VPN（Virtual Private Network）は暗号化された仮想的な専用通信路を作り、TLSは通信内容を暗号化します。
+運用：ICMPは疎通確認やエラー通知、SNMPはネットワーク機器の監視、NTPは時刻同期、SSHは機器やサーバーへの安全な遠隔接続に使われます。
+Web：HTTPはWeb通信の基本プロトコル、HTTPSはHTTPをTLSで保護した通信、Proxyは通信を中継し、CDNはコンテンツを複数拠点から効率よく配信します。

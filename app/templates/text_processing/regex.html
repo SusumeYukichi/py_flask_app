@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+    用語抽出画面
+{% endblock %}
+
+{% block header %}
+    {{ super() }}
+    <div>
+        <p class="app-count-up">
+            抽出結果(重複削除後)は
+            <span>{{ word_count }}</span>
+            件です.
+        </p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% if regex_list %}
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>用語(.txt)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key in regex_list | sort | unique %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ key }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}

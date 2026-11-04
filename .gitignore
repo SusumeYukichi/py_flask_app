@@ -1,0 +1,24 @@
+# 環境変数
+.env
+
+# 仮想環境
+.venv/
+
+# Pythonキャッシュ
+__pycache__/
+*.pyc
+
+# pytest
+.pytest_cache/
+
+# SQLiteを全階層で除外
+*.sqlite
+*.sqlite3
+*.db
+
+# VSCode
+.vscode/
+.DS_Store
+
+# CSSのコード整形　不要な関連ファイル
+node_modules/

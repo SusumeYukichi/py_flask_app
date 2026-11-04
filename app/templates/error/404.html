@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    ステータスコード:404
+{% endblock %}
+
+{% block content %}
+    <div>
+        <dl>
+            <dt>エラーメッセージ:</dt>
+            <dd>
+                {{ error_message }}
+            </dd>
+        </dl>
+    </div>
+{% endblock %}
+
+{% block script %}{% endblock %}
+
+{% block footer %}
+    <div>
+        <nav class="app-nav">
+            <a href="{{ url_for('main.index') }}" class="return-page button">戻る</a>
+        </nav>
+    </div>
+{% endblock %}

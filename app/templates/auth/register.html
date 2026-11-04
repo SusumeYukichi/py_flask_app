@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    アカウント作成画面
+{% endblock %}
+
+{% block content %}
+    {% from "form_macro.html" import render_field %}
+
+    <form method="post" action="{{ url_for('auth.register') }}" novalidate>
+        {{ form.csrf_token }} {{ render_field(form.username) }} {{ render_field(form.password) }} {{ form.submit() }}
+    </form>
+{% endblock %}
+
+{% block script %}{% endblock %}
+
+{% block footer %}
+    <div>
+        <nav class="app-nav">
+            <a href="{{ url_for('main.index') }}" class="return-page button">戻る</a>
+        </nav>
+    </div>
+{% endblock %}

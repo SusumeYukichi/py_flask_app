@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+    用語削除画面
+{% endblock %}
+
+{% block content %}
+    {% if memo_lists %}
+        <div class="one-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>用語</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for memo in memo_lists %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ memo.category | capitalize_if_lower }}</td>
+                            <td>
+                                <form method="post"
+                                      action="{{ url_for('memo.delete_memo', memo_id=memo.id) }}">
+                                    {{ form.csrf_token }}
+                                    <button type="submit" id="check-button" class="submit button">削除</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block script %}{% endblock %}

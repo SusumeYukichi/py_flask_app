@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}
+    用語管理画面
+{% endblock %}
+
+{% block header %}
+    {{ super() }}
+    <div>
+        <nav class="app-nav">
+            <ul>
+                <li>
+                    <a href="{{ url_for('memo.new_index') }}" class="memo button">用語作成</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('main.lists_details') }}" class="memo button">内容確認</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('main.input_file') }}" class="txt button">input.txt</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <p>
+            現在の登録用語数は
+            <span>{{ memo_count }}</span>
+            件です.
+            <br>
+            登録用語は
+            <span>{{ categories | map("capitalize_if_lower") | unique | sort | join(" | ") }}</span>
+            です.
+        </p>
+        <hr>
+    </div>
+    {% if memo_lists %}
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>作成日</th>
+                        <th>タイトル</th>
+                        <th>-</th>
+                        <th>-</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for memo in memo_lists %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ memo.input_date | jp_weekly }}</td>
+                            <td>{{ memo.subject }}</td>
+                            <td>
+                                <a href="{{ url_for('memo.edit_memo', memo_id=memo.id) }}"
+                                   class="memo button">編集</a>
+                            </td>
+                            <td>
+                                <a href="{{ url_for('main.lists_delete') }}" class="submit button">削除</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block script %}{% endblock %}
+
+{% block footer %}
+    <div>
+        <nav class="app-nav">
+            <a href="{{ url_for('auth.logout') }}" class="return-page button">終了</a>
+        </nav>
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}
+    用語確認画面
+{% endblock %}
+
+{% block content %}
+    {% set select_categories = {"organize": "情報整理", "analysis": ".txt"} %}
+    {% set level_labels = {"high": "高", "medium": "普通", "low": "低"} %}
+    {% if memo_lists %}
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>用語</th>
+                        <th>分類</th>
+                        <th>重要度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for memo in memo_lists | sort(attribute="category, close_date") %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ memo.category | capitalize_if_lower }}</td>
+                            <td>{{ select_categories.get(memo.select_category, memo.select_category) }}</td>
+                            <td class="cell-center level-{{ memo.level_radio }}">{{ level_labels.get(memo.level_radio, memo.level_radio) }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    {% if memo_lists %}
+        {% for group in memo_lists | groupby("close_date") %}
+            <h2>{{ group.grouper | jp_weekly }}</h2>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>内容</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for memo in group.list %}
+                            <tr>
+                                <td class="memo-content">{{ memo.content | capitalize_first_line }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

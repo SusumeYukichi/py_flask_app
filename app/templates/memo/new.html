@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    用語新規作成画面
+{% endblock %}
+
+{% block content %}
+    {% from "form_macro.html" import render_field %}
+    <form method="post" novalidate>
+        {{ form.csrf_token }}
+        {{ render_field(form.input_date) }}
+        {{ render_field(form.subject) }}
+        {{ render_field(form.select_category) }}
+        {{ render_field(form.level_radio.label) }}
+        {% for sub_radio_field in form.level_radio %}
+            {{ sub_radio_field.label }}
+            {{ sub_radio_field }}
+        {% endfor %}
+        {{ render_field(form.category) }}
+        {{ render_field(form.content) }}
+        {{ render_field(form.close_date) }}
+        {{ form.submit() }}
+    </form>
+{% endblock %}
+
+{% block script %}{% endblock %}
